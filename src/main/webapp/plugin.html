@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button id="install">安装</button>
+<button id="enable">启动</button>
+<button id="disable">关闭</button>
+<button id="remove">卸载</button>
+
+<script>
+    let installBtn = document.getElementById("install");
+    let enableBtn = document.getElementById("enable");
+    let disableBtn = document.getElementById("disable");
+    let removeBtn = document.getElementById("remove");
+    installBtn.onclick = function () {
+        let ajax = new XMLHttpRequest();
+        ajax.open("POST", "/springPlugin/plugin/install");
+        ajax.setRequestHeader("Content-Type", "application/json;charset=utf-8");
+        console.log(JSON.stringify(pluginInfo));
+        ajax.send(JSON.stringify(pluginInfo));
+    };
+
+    enableBtn.onclick = function () {
+        let ajax = new XMLHttpRequest();
+        ajax.open("POST", "/springPlugin/plugin/enable");
+        ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
+        ajax.send("id=312321");
+    };
+
+    disableBtn.onclick = function () {
+        let ajax = new XMLHttpRequest();
+        ajax.open("POST", "/springPlugin/plugin/disable");
+        ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
+        ajax.send("id=312321");
+    };
+
+    removeBtn.onclick = function () {
+        let ajax = new XMLHttpRequest();
+        ajax.open("POST", "/springPlugin/plugin/enable");
+        ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
+        ajax.send("id=312321");
+    };
+
+
+    let pluginInfo = {
+        id: "312321",
+        name: "logPlugin-1.0.jar",
+        url: "file:/C:/Users/12130/Desktop/logPlugin-1.0.jar",
+        version: "1.0",
+        className: "com.cp.plugin.LogPlugin"
+    };
+</script>
+</body>
+</html>
